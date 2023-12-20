@@ -1,7 +1,6 @@
-// import './style.css'
 import { BLOCK_SIZE, PIECES, BOARD_WIDTH, BOARD_HEIGHT, EVENT_MOVEMENTS } from './consts.js'
 
-// 1. inicializar el canvas
+//  Intialize the canvas
 const canvas = document.querySelector('canvas')
 const context = canvas.getContext('2d')
 const $score = document.querySelector('span')
@@ -15,9 +14,9 @@ canvas.height = BLOCK_SIZE * BOARD_HEIGHT
 
 context.scale(BLOCK_SIZE, BLOCK_SIZE)
 
-// 3. board
-// const board = createBoard(BOARD_WIDTH, BOARD_HEIGHT)
 
+
+// Creating a board, 14x30
 const board = [
   [
     0, 0, 0, 0, 0, 0,
@@ -175,7 +174,7 @@ function createBoard (width, height) {
   return Array(height).fill().map(() => Array(width).fill(0))
 }
 
-// Pieza inicial
+// Initial piece
 const piece = {
   position: { x: 5, y: 5 },
   shape: [
@@ -219,7 +218,7 @@ function update (time = 0) {
 }
 
 
-// Dibuja todo el tablero, lo que es 0, queda vacio, lo que es 1, se pinta de amarillo
+// Draws all the board, if it's 0, it's painted black, and if it's 1, it's painted yellow.
 function draw () {
  
   context.fillStyle = '#000'
@@ -247,7 +246,7 @@ function draw () {
 }
 
 
-// Movimiento con las flechas
+// Movement with the arrow keys
 document.addEventListener('keydown', event => {
   if (event.key === EVENT_MOVEMENTS.LEFT) {
     piece.position.x--
@@ -273,7 +272,7 @@ document.addEventListener('keydown', event => {
   }
 
 
-  // Rotacion de las piezas
+  // Rotation of the pieces
   if (event.key === 'ArrowUp') {
     const rotated = []
 
@@ -335,7 +334,7 @@ function resetPiece () {
 }
 
 
-// Si toda la fila tiene valor de 1, se elimina y se crea una nueva arriba con valor de todo 0.
+// If all the row, it's filled with 1, it's removed, and it prints another one in the start filled with 0.
 function removeRows () {
   const rowsToRemove = []
 
